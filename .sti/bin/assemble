@@ -1,0 +1,7 @@
+#!/bin/bash
+
+[[ -f secret1 ]] && echo "relative-secret1=$(cat secret1)"
+[[ -f secret2 ]] && echo "relative-secret2=$(cat secret2)"
+
+[[ -f /tmp/secret1 ]] && echo "secret1=$(cat /tmp/secret1)"
+[[ -f /tmp/secret2 ]] && echo "secret2=$(cat /tmp/secret2)"
