@@ -1,0 +1,51 @@
+{
+  "kind":"BuildConfig",
+  "apiVersion":"v1",
+  "metadata":{
+    "name":"test",
+    "labels":{
+      "name":"test"
+    }
+  },
+  "spec":{
+    "triggers":[],
+    "source":{
+      "type":"Git",
+      "git":{
+        "uri":"https://github.com/wzheng1/build-secret",
+      },
+      "secrets": [
+        {
+          "secret": { "name": "secret1" },
+          "destinationDir": "/tmp"
+        },
+        {
+          "secret": { "name": "secret2" }
+        }
+      ]
+    },
+    "strategy":{
+      "type":"Source",
+      "env": [
+        {
+          "name": "BUILD_LOGLEVEL",
+          "value": "5"
+        }
+      ],
+      "sourceStrategy":{
+        "from":{
+          "kind":"ImagestreamTag",
+          "name":"ruby:2.2",
+          "namespace": "openshift"
+        },
+        "scripts":"https://raw.githubusercontent.com/wzheng1/build-secret/master/.sti/bin/assemble"
+      }
+    },
+    "output":{
+      "to":{
+        "kind":"ImageStreamTag",
+        "name":"test:latest"
+      }
+    }
+  }
+}
