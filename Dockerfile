@@ -10,7 +10,7 @@ CMD ["scl", "enable", "rh-ruby22", "./run.sh"]
 USER root
 RUN chmod og+rw /opt/app-root/src/db
 
-ADD mysecret1 /secrets
+ADD ./mysecret1 /secrets
 COPY ./secret2 /
 
 RUN test -f /secrets/secret1 && echo -n "secret1=" && cat /secrets/secret1
