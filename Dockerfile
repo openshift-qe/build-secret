@@ -15,7 +15,6 @@ COPY ./secret2 /
 
 RUN test -f /secret1 && echo -n "secret1=" && cat /secret1
 RUN test -f /secret2 && echo -n "relative-secret2=" && cat /secret2
-RUN rm -rf /secret1 && rm -rf /secret2
 
 CMD ["true"]
 
