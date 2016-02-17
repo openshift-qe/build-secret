@@ -10,8 +10,8 @@ CMD ["scl", "enable", "rh-ruby22", "./run.sh"]
 USER root
 RUN chmod og+rw /opt/app-root/src/db
 
-ADD /var/run/secrets/openshift.io/build/secret1 .
-COPY /var/run/secrets/openshift.io/build/secret2 .
+ADD ./mysecret1 /secrets
+COPY ./secret2 /
 
 #RUN test -f /secrets/secret1 && echo -n "secret1=" && cat /secrets/secret1
 #RUN test -f /secret2 && echo -n "relative-secret2=" && cat /secret2
